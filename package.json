@@ -1,0 +1,25 @@
+{
+  "name": "jsonld-path",
+  "version": "0.1.0",
+  "description": "An XPath inspired path language for JSON(-LD)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miguel76/jsonld-path.git"
+  },
+  "keywords": [
+    "JSON-LP",
+    "JSON",
+    "path",
+    "XPath"
+  ],
+  "author": "Miguel Ceriani <miguel.ceriani@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miguel76/jsonld-path/issues"
+  },
+  "homepage": "https://github.com/miguel76/jsonld-path#readme"
+}
