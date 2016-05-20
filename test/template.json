@@ -1,0 +1,63 @@
+{
+  "@if": {
+    "@create": "div[class=container]",
+    "![@type=owl:Ontology]" : "",
+    "": [
+      {
+        "@let": "$ontology",
+        "@create": "div[_id=ontoDescr]",
+        "rdfs:label/concat(_, ' ')": {
+          "@create": "[1]h1",
+          "$ontology/owl:versionInfo/fn:concat('Version ', _)": "_small",
+        },
+        "rdfs:comment": "[2]p[_class=lead]",
+      },
+      {
+        "@create": "div[_id=classList]",
+        "": [
+          "h1='Classes'",
+          {
+            "@create": "dl[_id=classDefs]",
+            "[@type=rdfs:Class]" : [
+              {
+                "fn:concat(rdfs:label, ' (', xsd:string(@id), ')')": "h2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "@create": "div[_id=propertyList]",
+        "[@type=rdf:Property]" : {}
+      }
+    ]
+  },
+  "rest": {
+    "@keys": "$to/rdf:type=rdf:Property",
+    "@keys/rdfs:domain": "rdf:type",
+    "@^keys/rdfs:range": "rdf:type",
+    ".": ["$from/rdf:type=rdfs:Resource", "$to/rdf:type=rdfs:Resource"],
+    "rdfs:subPropertyOf/rdfs:subPropertyOf": "rdfs:subPropertyOf",
+    "@keys/[rdfs:subPropertyOf/?bbb]": "@keys/?bbb",
+    "[rdf:type/rdfs:Class]": "rdfs:subClassOf/rdfs:Resource",
+    "rdf:type/rdfs:subClassOf": "rdf:type",
+    "[rdf:type/rdfs:Class]": "rdfs:subClassOf",
+    "rdfs:subClassOf/rdfs:subClassOf": "rdfs:subClassOf",
+    "[rdf:type/rdfs:ContainerMembershipProperty]": "rdfs:subPropertyOf/rdfs:member/",
+    "[rdf:type/rdfs:Datatype]": "rdfs:subClassOf/rdfs:Literal/"
+  }
+}
+
+- var ontoDescr = tree['@graph'][0];
+h1= ontoDescr['label'] + ' '
+  small= 'Version ' + ontoDescr['owl:versionInfo']
+p(class='lead')= ontoDescr['comment']
+.btn-group
+  a(
+    class='btn btn-default btn-lg active',
+    role='button', href= path + '.rdf'
+  ) Download as RDF/XML...
+  a(
+    class='btn btn-default btn-lg active',
+    role='button', href= path + '.jsonld'
+  ) Download as JSON-LD...

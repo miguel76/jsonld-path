@@ -1,0 +1,17 @@
+{
+  "@if": {
+    "^@prop/^@pred": "@type=rdf:Property",
+    "@pred/@prop/rdfs:domain": "@type",
+    "^@obj/@prop/rdfs:range": "@type",
+    ".": ["$from/@type=rdfs:Resource", "$to/@type=rdfs:Resource"],
+    "rdfs:subPropertyOf/rdfs:subPropertyOf": "rdfs:subPropertyOf",
+    "[@type=rdf:Property]": "rdfs:subPropertyOf",
+    "@pred[@prop/rdfs:subPropertyOf=?bbb]/@obj": "?bbb",
+    "[@type=rdfs:Class]": "rdfs:subClassOf=rdfs:Resource",
+    "@type/rdfs:subClassOf": "@type",
+    "[@type=rdfs:Class]": "rdfs:subClassOf",
+    "rdfs:subClassOf/rdfs:subClassOf": "rdfs:subClassOf",
+    "[@type/rdfs:ContainerMembershipProperty]": "rdfs:subPropertyOf=rdfs:member",
+    "[@type/rdfs:Datatype]": "rdfs:subClassOf=rdfs:Literal"
+  }
+}

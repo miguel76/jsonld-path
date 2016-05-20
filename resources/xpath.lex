@@ -1,0 +1,14 @@
+IntegerLiteral ::=	Digits
+DecimalLiteral	   ::=   	("." Digits) | (Digits "." [0-9]*)	/* ws: explicit */
+DoubleLiteral	   ::=   	(("." Digits) | (Digits ("." [0-9]*)?)) [eE] [+-]? Digits	/* ws: explicit */
+StringLiteral	   ::=   	('"' (EscapeQuot | [^"])* '"') | ("'" (EscapeApos | [^'])* "'")	/* ws: explicit */
+URIQualifiedName	   ::=   	BracedURILiteral NCName	/* ws: explicit */
+BracedURILiteral	   ::=   	"Q" "{" [^{}]* "}"	/* ws: explicit */
+EscapeQuot	   ::=   	'""'
+EscapeApos	   ::=   	"''"
+Comment	   ::=   	"(:" (CommentContents | Comment)* ":)"	/* ws: explicit */
+QName	   ::=   	[http://www.w3.org/TR/REC-xml-names/#NT-QName]Names	/* xgc: xml-version */
+NCName	   ::=   	[http://www.w3.org/TR/REC-xml-names/#NT-NCName]Names	/* xgc: xml-version */
+Char	   ::=   	[http://www.w3.org/TR/REC-xml#NT-Char]XML	/* xgc: xml-version */
+Digits	   ::=   	[0-9]+
+CommentContents	   ::=   	(Char+ - (Char* ('(:' | ':)') Char*))
